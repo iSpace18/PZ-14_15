@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Список фруктов</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+    ul {
+        list-style: none;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    li {
+        margin: 5px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #fff;
+        transition: all 0.3s;
+    }
+    .red {
+        color: red;
+    }
+    .green {
+        color: green;
+    }
+    .orange {
+        color: orange;
+    }
+    .yellow {
+        color: yellow;
+    }
+    button {
+        margin: 10px;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+</style>
+</head>
+<body>
+<ul>
+    <li class="red">Apple</li>
+    <li class="green">Pear</li>
+    <li class="orange">Orange</li>
+    <li class="yellow">Banana</li>
+    <li class="red">Strawberry</li>
+    <li class="green">Kiwi</li>
+    <li class="orange">Peach</li>
+    <li class="yellow">Pineapple</li>
+    <li class="red">Cherry</li>
+    <li class="green">Watermelon</li>
+    <li class="orange">Mango</li>
+    <li class="yellow">Lemon</li>
+</ul>
+<div>
+    <button onclick="highlight('red')">Красный</button>
+    <button onclick="highlight('green')">Зеленый</button>
+    <button onclick="highlight('orange')">Оранжевый</button>
+    <button onclick="highlight('yellow')">Желтый</button>
+</div>
+<script>
+    function highlight(color) {
+        var fruits = document.querySelectorAll('li');
+        fruits.forEach(function(fruit) {
+            var fruitColor = fruit.classList[0]; // Получаем цвет фрукта
+            if (fruitColor === color) {
+                fruit.style.fontWeight = 'bold'; // Если цвет совпадает, выделяем жирным
+                fruit.style.textShadow = '2px 2px 2px ' + getClosestColor(color); // Добавляем тень от ближайшего цвета
+            } else {
+                fruit.style.fontWeight = 'normal'; // Иначе возвращаем стандартное начертание
+                fruit.style.textShadow = 'none'; // Убираем тень
+            }
+        });
+    }
+
+    function getClosestColor(color) {
+        switch (color) {
+            case 'red':
+                return 'darkred';
+            case 'green':
+                return 'darkgreen';
+            case 'orange':
+                return 'darkorange';
+            case 'yellow':
+                return 'darkgoldenrod';
+            default:
+                return 'black';
+        }
+    }
+</script>
+</body>
+</html>

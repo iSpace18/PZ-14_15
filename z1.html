@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Следование за курсором</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background-image: url('cartoon-race-track-with-cars-and-landscape-top-view-auto-competition-topography-concept-flat-design-style-vector-illustration-of-racetrack_287964-1284.avif');
+        background-size: cover;
+        background-repeat: no-repeat;
+        overflow: hidden;
+    }
+    img {
+        position: absolute;
+    }
+</style>
+</head>
+<body>
+<img src="images.jpg" alt="Животное" id="animal">
+<script>
+    document.addEventListener('mousemove', function(event) {
+        var animal = document.getElementById('animal');
+        var mouseX = event.clientX;
+        var mouseY = event.clientY;
+
+        animal.style.left = mouseX + 'px';
+        animal.style.top = mouseY + 'px';
+
+        // Проверка, чтобы животное не выходило за пределы экрана
+        if (mouseX + animal.width > window.innerWidth) {
+            animal.style.left = window.innerWidth - animal.width + 'px';
+        }
+        if (mouseY + animal.height > window.innerHeight) {
+            animal.style.top = window.innerHeight - animal.height + 'px';
+        }
+    });
+</script>
+</body>
+</html>
